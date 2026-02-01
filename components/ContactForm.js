@@ -1,74 +1,56 @@
-'use client'; 
+'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-export default function ContactForm() {
-  const router = useRouter();
-  const [status, setStatus] = useState('idle');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+export default function TenderForm() {
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatus('transmitting');
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
 
-      if (res.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        router.push('/contact/success');
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    if (res.ok) setStatus('secured');
   };
 
   return (
-    <div className="max-w-md mx-auto p-8 bg-white shadow-2xl rounded-xl">
-      <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Secure Strategy Inquiry</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-600 outline-none transition"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email Address"
-          className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-600 outline-none transition"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
-        <textarea
-          placeholder="How can we help with your federal mission?"
-          className="w-full p-3 border border-gray-200 rounded-lg h-32 focus:ring-2 focus:ring-red-600 outline-none transition"
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          required
-        />
-        <button
-          type="submit"
-          disabled={status === 'loading'}
-          className="w-full bg-red-600 text-white font-black py-4 rounded-lg hover:bg-red-700 transition uppercase tracking-widest shadow-lg active:scale-95 disabled:opacity-50"
-        >
-          {status === 'loading' ? 'Processing...' : 'Schedule Strategy Meeting'}
-        </button>
+    <section className="bg-[#0f1218] p-12 rounded-[3rem] border border-slate-800 shadow-2xl max-w-4xl mx-auto">
+      <div className="mb-10">
+        <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Project <span className="text-red-600">Briefing</span></h3>
+        <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-2">Submit official project tenders for review.</p>
+      </div>
 
-        {status === 'success' && <p className="text-green-600 font-bold text-center">Redirecting to success page...</p>}
-        {status === 'error' && <p className="text-red-600 font-bold text-center">System error. Please try again.</p>}
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Liaison Name</label>
+          <input name="name" required className="w-full bg-slate-900 border border-slate-800 p-4 rounded-xl text-white outline-none focus:border-red-600 transition" placeholder="Full Name" />
+        </div>
+        <div>
+          <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Authorized Email</label>
+          <input name="email" type="email" required className="w-full bg-slate-900 border border-slate-800 p-4 rounded-xl text-white outline-none focus:border-red-600 transition" placeholder="dept@gov.in" />
+        </div>
+        <div className="md:col-span-2">
+          <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Operational Sector</label>
+          <select name="sector" className="w-full bg-slate-900 border border-slate-800 p-4 rounded-xl text-white outline-none focus:border-red-600 transition">
+            <option>Urban Modernization</option>
+            <option>Strategic Energy Grid</option>
+            <option>Federal Logistics</option>
+          </select>
+        </div>
+        <div className="md:col-span-2">
+          <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Mission Intelligence (Message)</label>
+          <textarea name="message" required className="w-full bg-slate-900 border border-slate-800 p-6 rounded-xl text-white h-40 outline-none focus:border-red-600 transition" placeholder="Define project scope and requirements..." />
+        </div>
+        <button className="md:col-span-2 bg-red-600 hover:bg-red-700 text-white font-black py-5 rounded-xl uppercase tracking-[0.3em] transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)]">
+          {status === 'transmitting' ? 'Transmitting Data...' : status === 'secured' ? 'Inquiry Secured' : 'Initiate Submission'}
+        </button>
       </form>
-    </div>
+    </section>
   );
 }
