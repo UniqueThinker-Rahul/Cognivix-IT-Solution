@@ -1,49 +1,51 @@
-// app/sectors/page.js
+'use client';
+
 const sectors = [
   {
-    id: "power-grid",
-    title: "Energy Grid Hardening",
-    details: "Structural reinforcement of regional power distribution centers against physical and environmental stressors.",
-    specs: ["HVDC Integration", "SCADA Hardening", "Seismic Dampening"]
+    title: "Federal & National Security",
+    desc: "Serving highly regulated organizations that require mission-critical cybersecurity and cleared staffing support.",
+    bullets: ["NIST & CMMC alignment", "Mission readiness support", "Secure cloud architectures"]
   },
   {
-    id: "logistics",
-    title: "Federal Logistics Hubs",
-    details: "Automated warehouse and supply chain infrastructure designed for high-velocity public resource distribution.",
-    specs: ["Automated Sorting", "Drone Delivery Uplinks", "Cold-Chain Integrity"]
+    title: "State & Local Government",
+    desc: "Modernizing legacy systems and protecting citizen information for municipal entities.",
+    bullets: ["Digital service transformation", "Risk governance", "Scalable cloud adoption"]
   },
   {
-    id: "transport",
-    title: "Strategic Transport Corridors",
-    details: "Development of hardened transit paths for emergency and high-priority federal movement.",
-    specs: ["Grade-A Pavement Tech", "ITS (Intelligent Transport)", "Modular Bridge Architecture"]
+    title: "Public Safety & Justice",
+    desc: "High-assurance solutions for law enforcement and emergency response systems.",
+    bullets: ["Secure communications", "Incident-response readiness", "Integrated digital systems"]
+  },
+  {
+    title: "Modernization & AI",
+    desc: "Replacing outdated systems with efficient, scalable, and AI-driven secure solutions.",
+    bullets: ["Cloud transformation", "Enterprise AI automation", "Agile service delivery"]
   }
 ];
 
 export default function SectorsPage() {
   return (
-    <main className="bg-[#0a0c10] min-h-screen text-white pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="border-l-4 border-red-600 pl-8 mb-20">
-          <h1 className="text-6xl font-black uppercase tracking-tighter">Operational <span className="text-red-600">Sectors</span></h1>
-          <p className="text-slate-500 font-bold uppercase tracking-widest mt-4">Infrastructure Divisions v4.0</p>
+    <main className="bg-[#0a0c10] min-h-screen pt-40 pb-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+            Sectors <span className="text-red-600">We Serve</span>
+          </h1>
+          <div className="w-24 h-1 bg-red-600 mx-auto mt-6"></div>
         </div>
 
-        <div className="grid gap-12">
-          {sectors.map((s) => (
-            <div key={s.id} className="group bg-[#0f1218] border border-slate-800 p-12 rounded-[2rem] hover:border-red-600 transition-all duration-500 flex flex-col md:flex-row gap-12">
-              <div className="md:w-1/3">
-                <h2 className="text-3xl font-black uppercase tracking-tight mb-4 group-hover:text-red-500 transition">{s.title}</h2>
-                <div className="flex gap-2">
-                   {s.specs.map(tag => (
-                     <span key={tag} className="text-[8px] border border-slate-700 px-2 py-1 rounded text-slate-500 font-bold uppercase">{tag}</span>
-                   ))}
-                </div>
-              </div>
-              <div className="md:w-2/3 border-l border-slate-800 md:pl-12">
-                <p className="text-slate-400 leading-relaxed mb-6 italic">"{s.details}"</p>
-                <button className="text-xs font-black uppercase tracking-widest text-red-600 hover:text-white transition">View Technical Specs →</button>
-              </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {sectors.map((s, idx) => (
+            <div key={idx} className="bg-[#0f1218] p-12 rounded-[2.5rem] border border-white/5 hover:border-red-600/40 transition-all">
+              <h2 className="text-3xl font-black text-white uppercase mb-4">{s.title}</h2>
+              <p className="text-slate-500 text-sm mb-8 leading-relaxed">{s.desc}</p>
+              <ul className="space-y-3">
+                {s.bullets.map((b, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-300 text-[10px] font-black uppercase tracking-widest">
+                    <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span> {b}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

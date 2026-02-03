@@ -95,10 +95,10 @@ export default function Home() {
         
         <div className="container mx-auto px-6 relative z-20">
           <div className="max-w-4xl space-y-8">
-            <div className="inline-block px-4 py-1 border border-red-600 text-red-600 text-xs font-bold uppercase tracking-widest bg-slate-900/50 backdrop-blur-sm">
+            {/* <div className="inline-block px-90 py-1 border border-red-600 text-red-600 text-xs font-bold uppercase tracking-widest bg-slate-900/50 backdrop-blur-sm">
               Est. 2026 | Federal Staffing & Capture
-            </div>
-            <h1 className="text-6xl md:text-8xl font-black leading-[1] uppercase tracking-tighter drop-shadow-lg">
+            </div> */}
+            <h1 className="text-20xl md:text-90xl font-black leading-[1] uppercase tracking-tighter drop-shadow-lg">
               The Standard in <br />
               <span className="text-red-600 underline decoration-4 underline-offset-8">Federal</span> Growth
             </h1>
@@ -109,7 +109,7 @@ export default function Home() {
               <a href="#contact" className="bg-red-600 hover:bg-red-700 px-10 py-4 text-lg font-black uppercase transition-all shadow-2xl active:scale-95 text-center">
                 Partner With Us
               </a>
-              <a href="#capabilities" className="border-2 border-white hover:bg-white hover:text-slate-900 px-10 py-4 text-lg font-black uppercase transition-all text-center">
+              <a href="#capabilities" className="border-2 border-white hover:bg-white hover:text-slate-900 px-10 py-3 text-lg font-black uppercase transition-all text-center">
                 Capabilities
               </a>
             </div>
