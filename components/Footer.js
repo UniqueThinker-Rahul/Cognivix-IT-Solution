@@ -32,14 +32,17 @@ export default function Footer() {
         <div className="flex flex-col gap-2">
           <span>© 2026 Cognivix Strategic Operations</span>
            <span className="text-slate-700">
-            Developed by <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Cognivix</a>
+            Developed by <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Cognivix 2026</a>
           </span>
-          <span className="text-slate-700">
+  <span className="text-slate-700">
+            Developed by <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Copyright ©️</a>
+          </span>
+  {/* <span className="text-slate-700">
             Engineered by <a href="https://github.com/UniqueThinker-Rahul" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">UniqueThinker-Rahul</a>
           </span>
           <span className="text-slate-700">
             Maintained by <a href="https://www.growthservice.in/" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Growth Service | Professional Digital Solutions Agency</a>
-          </span>
+          </span> */}
           
         </div>
         <div className="flex items-center gap-4">
