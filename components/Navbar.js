@@ -31,7 +31,10 @@ export default function Navbar() {
       subLinks: [
         { name: 'Cybersecurity', href: '/services/cyber' },
         { name: 'Cloud Architecture', href: '/services/cloud' },
-        { name: 'Technical Governance', href: '/services/governance' }
+        { name: 'Technical Governance', href: '/services/governance' },
+        { name: 'GIS & Remote Sensing', href: '/services/gis' },
+        // Add this entry inside your navLinks array under 'Services'
+{ name: 'Proposal Engineering', href: '/services/proposal' }
       ]
     },
     { 
