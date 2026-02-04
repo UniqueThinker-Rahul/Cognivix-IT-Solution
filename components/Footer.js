@@ -35,7 +35,7 @@ export default function Footer() {
             Developed by <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Cognivix 2026</a>
           </span>
   <span className="text-slate-700">
-            Developed by <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Copyright ©️</a>
+            <a href="####" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">Copyright ©️</a>
           </span>
   {/* <span className="text-slate-700">
             Engineered by <a href="https://github.com/UniqueThinker-Rahul" target="_blank" className="text-red-600/50 hover:text-red-600 transition underline">UniqueThinker-Rahul</a>
